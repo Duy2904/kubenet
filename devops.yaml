@@ -9,7 +9,7 @@ spec:
   source:
     path: demo-app
     repoURL: 'https://github.com/Duy2904/Devops.git'
-    targetRevision: HEAD
+    targetRevision: master
   destination:
     name: ''
     namespace: demo-app
