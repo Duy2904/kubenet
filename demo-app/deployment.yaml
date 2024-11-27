@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: docker.io/duy290410/tmc:v01
+          image: docker.io/duy290410/devops:v01
           imagePullPolicy: Always
           
