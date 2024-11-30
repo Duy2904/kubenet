@@ -8,7 +8,7 @@ spec:
 
   source:
     path: demo-app
-    repoURL: 'https://github.com/Duy2904/Devops.git'
+    repoURL: 'https://github.com/Duy2904/kubenet.git'
     targetRevision: master
   destination:
     name: ''
