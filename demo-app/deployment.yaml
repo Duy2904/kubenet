@@ -17,33 +17,4 @@ spec:
       containers:
         - name: demo-app
           image: docker.io/duy290410/tmc:v01
-          imagePullPolicy: Always
-          
-          apiVersion: networking.k8s.io/v1
-
-
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
-    kubernetes.io/ingress.class: traefik
-  labels:
-    app: demo-app
-  name: demo-app
-  namespace: master
-spec:
-  rules:
-  - host: duy.com
-    http:
-      paths:
-      - backend:
-          service:
-            name: demo-app-svc
-            port: 
-              number: 8888
-        path: /
-        pathType: Prefix  
-  tls:
-  - hosts:
-    - duy.com
-    secretName: demo-app-tls
+          imagePullPolicy: Always        
