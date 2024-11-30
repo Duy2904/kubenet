@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: docker.io/duy290410/tmc:002
+          image: docker.io/duy290410/tmc:003
           port : 
             - containerPort : 8888
           imagePullPolicy: Always      
