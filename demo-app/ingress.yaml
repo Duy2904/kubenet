@@ -1,27 +1,4 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: demo-app
-  labels:
-    app: demo-app
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: demo-app
-  template:
-    metadata:
-      labels:
-        app: demo-app
-    spec:
-      containers:
-        - name: demo-app
-          image: docker.io/duy290410/tmc:v01
-          imagePullPolicy: Always
-          
-          apiVersion: networking.k8s.io/v1
-
-
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -30,7 +7,7 @@ metadata:
   labels:
     app: demo-app
   name: demo-app
-  namespace: master
+  #namespace: master
 spec:
   rules:
   - host: duy.com
