@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    path: frontend/apihub-frontend-react/dev
+    repoURL: 'https://dev.azure.com/TripOTAEcoSys/TripOTAFramework/_git/TripOTA.Deployment'
+    targetRevision: release
+   
+  destination:
+    name: ''
+    namespace: apihub
+    server: 'https://kubernetes.default.svc'
+
+  syncPolicy:
+    automated: {}
+   #   prune: true
+    #  selfHeal: true
+   # syncOptions:
+   #   - CreateNamespace=true
+    

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apihub
+  namespace: argocd
+spec:
+  project: default  # Thay thế bằng tên project của bạn trong ArgoCD
+  source:
+    repoURL: https://dev.azure.com/TripOTAEcoSys/TripOTAFramework/_git/TripOTA.Deployment
+    targetRevision: release  # Chỉ vào nhánh release
+    path: frontend/apihub-frontend-react/dev
+    #directory: .
+    #sshPrivateKeySecret: tripota-acr-secret  # Tên secret chứa khóa SSH
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+    

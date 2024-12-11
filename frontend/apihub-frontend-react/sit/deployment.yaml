@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tmc-management-react
+  name: tmc-management-react
+  namespace: sit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tmc-management-react
+  template:
+    metadata:
+      labels:
+        app: tmc-management-react
+    spec:
+      containers:
+      - image: tripotadevacr.azurecr.io/tmc-management-react:14700
+        imagePullPolicy: Always
+        name: tmc-management-react
+        ports:
+        - containerPort: 8889
+      imagePullSecrets:
+      - name: tripota-acr-secret

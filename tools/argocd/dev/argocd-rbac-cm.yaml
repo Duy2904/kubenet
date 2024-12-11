@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.csv: |
+    p, role:tmc-dev, applications, get, tmc/*, allow
+    p, role:tmc-dev, projects, get, tmc, allow
+    p, role:tour-dev, applications, *, tour/*, allow
+    p, role:tour-dev, projects, get, tour, allow
+    p, role:master-data-dev, applications, *, master-data/*, allow
+    p, role:master-data-dev, projects, get, master-data, allow
+    p, role:booking-engine-dev, applications, *, booking-engine/*, allow
+    p, role:booking-engine-dev, projects, get, booking-engine, allow
+    p, role:notification-dev, applications, *, notification/*, allow
+    p, role:notification-dev, projects, get, notification, allow
+    p, role:identity-dev, applications, *, identity/*, allow
+    p, role:identity-dev, projects, get, identity, allow
+    p, role:builder, applications, get, */*, allow
+    p, role:builder, applications, sync, */*, allow
+    g, bientd, role:tmc-dev
+    g, bientd, role:notification-dev
+    g, bientd, role:identity-dev
+    g, phongth, role:tmc-dev
+    g, phongth, role:notification-dev
+    g, phongth, role:identity-dev
+    g, lamdt, role:booking-engine-dev
+    g, lamdt, role:master-data-dev
+    g, longdk, role:booking-engine-dev
+    g, longdk, role:master-data-dev
+    g, duynn, role:tour-dev
+    g, khoantm, role:tour-dev
+    g, builder, role:builder
+  policy.default: ""

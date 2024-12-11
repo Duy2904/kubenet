@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: traefik
+  labels:
+    app: tmc-booker-react
+  name: tmc-booker-react
+  namespace: development
+spec:
+  rules:
+  - host: tmc-booker-dev.tripota.com.vn
+    http:
+      paths:
+      - backend:
+          service:
+            name: tmc-booker-react-svc
+            port: 
+              number: 80
+        path: /
+        pathType: Prefix  
+  tls:
+  - hosts:
+    - tmc-booker-dev.tripota.com.vn
+    secretName: tmc-booker-react-tls

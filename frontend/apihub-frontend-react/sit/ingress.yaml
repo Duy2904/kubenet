@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: traefik
+  labels:
+    app: tmc-management-react
+  name: tmc-management-react
+  namespace: sit
+spec:
+  rules:
+  - host: tmc-management-sit.tripota.com.vn
+    http:
+      paths:
+      - backend:
+          service:
+            name: tmc-management-react-svc
+            port: 
+              number: 80
+        path: /
+        pathType: Prefix  
+  tls:
+  - hosts:
+    - tmc-management-sit.tripota.com.vn
+    secretName: tmc-management-react-tls

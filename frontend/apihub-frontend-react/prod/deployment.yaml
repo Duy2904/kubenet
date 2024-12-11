@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apihub-frontend-react-prod
+  name: apihub-frontend-react-prod
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apihub-frontend-react-prod
+  template:
+    metadata:
+      labels:
+        app: apihub-frontend-react-prod
+    spec:
+      containers:
+      - image: tripotadevacr.azurecr.io/apihub-frontend-react-prod:15479
+        imagePullPolicy: Always
+        name: apihub-frontend-react-prod
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: tripota-acr-secret
